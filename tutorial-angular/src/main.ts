@@ -5,7 +5,7 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
 //Aquí importaremos los componentes que vayamos creando
-import { HeaderComponent } from './app/header.component';
+import { HeaderComponent } from './app/header/header.component';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
