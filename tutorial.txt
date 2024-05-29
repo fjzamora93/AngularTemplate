@@ -38,4 +38,16 @@
         http://localhost:4200/
         
     Si todo se ha creado correctamente y visitas la url propuesta, debería verse algo.
-    Es posible que si algo está fallando en este punto se deba al path.
+    Es posible que si algo está fallando en este punto se deba al path. También es posible reiniciar el Visual Studio.
+    Para interrumpir el servidor, basta con usar el siguiente comando:
+
+        ctrl + c
+
+#4 Instalación de las dependencias (package)
+
+    Navega hasta la carpeta del proyecto y asegúrate de tener instaladas todas las dependencias.
+    Para instalar las dependencias, bastará con usar el siguietne comando:
+
+        npm install
+    
+    Esto solo será necesario hacerlo una vez para tener instaladas todas las dependencias.
