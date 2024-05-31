@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { UserComponent } from "./user/user.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-
-  //Aquí es donde iremos importando cada componente para que quede todo bien anidado
-  imports: [RouterOutlet, HeaderComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, HeaderComponent, UserComponent]
 })
 export class AppComponent {
   title = 'tutorial-angular';
