@@ -1,20 +1,30 @@
 
-<!--- Dentro de app-component vamos a ir metiendo todo lo que queramos que aparezca-->
 
-<!--- En teoría podrías meterlo aquí directamente y darle a la bombilla para que haga la importación, 
-  pero no siempre va a funcionar así, así que quizás tengas que hacer las importanciones manualmente-->
 <router-outlet />
 
-<!--- No siempre necesitas la etiqueta de apertura y cierre, si no hay nada entre medias, 
-puedes simplificarlo y crear una etiqueta de autocierre (como abajo vemos en app-user)-->
 <app-header></app-header>
 
 
-<!--- Para respetar el formato, muchos elementos vamos a querer insertarlos dentro del selector main-->
 <main>
   <ul id="users">
     <li>
-      <app-user/>
+      <app-user 
+      [avatar]="users[0].avatar"
+      [name]="users[0].name"/>
     </li>
+
+    <li>
+      <app-user 
+      [avatar]="users[1].avatar"
+      [name]="users[1].name"/>
+    </li>
+
+    <li>
+      <app-user 
+      [avatar]="users[2].avatar"
+      [name]="users[2].name"/>
+    </li>
+
+
   </ul>
 </main>
