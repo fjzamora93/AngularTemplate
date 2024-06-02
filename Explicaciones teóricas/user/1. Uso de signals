@@ -1,0 +1,92 @@
+A través de esta carpeta exploraremos las posibilidades de utilizar signals 
+y cómo funciona el sistema clásico de manejo y detección de eventos clásicos en Angular.
+
+Puesto que de momento Signals se trata de algo muy reciente, 
+no será la forma más habitual de manejar eventos, aunque es bueno tenerlos en cuenta.
+
+LA JERARQUÍA DE NUESTRA carpeta
+
+|=======================================
+|DIRECTORIO app
+|    -file: app.component.html
+|    -file: app.component.ts
+|
+|    DIRECTORIO user
+|        -file: user.component.html
+|        -file: user.component.ts
+|---------------------------------------
+
+
+SECUENCIA PARA CREAR COMPONENTES
+
+1. EXPORTAR DESDE app.components.ts
+    Si queremos que una variable esté disponible desde nuestro html app.component.html, 
+    podemos exportarla desde app.components.ts
+
+    Ejemplo:
+
+        export class AppComponent {
+            users = tu-variable-exportada;
+        }
+
+    Ahora, al irnos a nuestro app.component.html, podremos usar este VALOR:
+        
+        <p> {{ users[1].name }} </p>
+
+    Como podemos ver, esto afecta al contenido, 
+    pero no a la propiedad en sí misma.
+    Para poder crear una propiedad, tendremos que irnos al directorio USER.
+
+
+2. CREAR LA propiedad
+
+    Desde nuestro archivo user.component.ts, 
+    exportaremos una clase que hará lo siguiente:
+
+    1. Va a crear un selector con el nombre que le digamos.
+    2. El selector tendrá las propiedades que le indiquemos.
+
+    Veamos como quedaría:
+
+    USER.COMPONENT.TS
+
+        export class UserComponent {
+            @Input() avatar!: string;
+            get imagePath() {
+                return `assets/users/${this.avatar}`;
+            }
+        }
+
+    USER.COMPONENT.html
+
+        <img [src]="imagePath" />
+
+    Nótese que imagePath es un GETTER y no lleva paréntesis al llamarlo.
+
+3. VOLVEMOS AL APP.COMPONENT.HTML
+
+    Si volvemos a echar un vistazo a nuestro HTML, 
+    nos daremos cuenta de que nuestro selector <app-user/>
+    puede acceder sin problemas a la PROPIEDAD y el VALOR.
+
+        <app-user 
+            [avatar]="users[1].avatar"
+        />
+
+    a. Primero definimos la variable 'users'.
+    b. Luego creamos un selector y una propiedad 'avatar'
+    c. Asignamos el valor de 'user' a la propiedad 'avatar'.
+
+    En este caso concretamente, puesto que 'users' es un ARRAY de OBJETOS,
+    (lo que en Python entenderíamos como un diccionario), 
+    accederíamos en primer lugar al índice correspondiente,
+    y en segundo lugar a su PROPIEDAD (que podemos llamar KEY).
+
+        users[0] -> nos devolverá el primer índice del ARRAY
+        users[0].avatar -> nos devolverá el valor de la clave avatar.
+
+    Puesto que tenemos un GETTER detrás de todo esto,
+    Angular se encargará de tomar este String y aplicarle 
+    las modificaciones que nosotros hicimos (añadiendo la ruta completa).
+    
+
