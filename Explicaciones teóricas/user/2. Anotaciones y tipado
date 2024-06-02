@@ -1,0 +1,9 @@
+TypeScript incluye algunas anotaciones específicas, que pueden ser las siguientes:
+
+    ! -> Indica que la variable no ha sido inicializada pero que a ciencia cierta 
+        tendrá algún valor. Si no nos aseguramos de que así sea (con un required),
+        poner este símbolo será una mentira.
+
+    ? -> Indica que la variable no ha sido inicializada y que es posible que nunca
+        tenga ningún valor. Solo debemos usar esta anotación cuando realmente no
+        nos importe que se inicialice con un Nan.

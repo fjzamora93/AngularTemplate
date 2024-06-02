@@ -8,24 +8,23 @@
 <main>
   <ul id="users">
     <li>
-      <app-user 
-        [id]="users[0].id"
-        [avatar]="users[0].avatar"
-        [name]="users[0].name"
-        (select)="onSelectUser($event)"
-      />
+      <app-user [user]="users[0]" 
+      (select)="onSelectUser($event)"/>
+        
     </li>
 
     <li>
-      <app-user 
-      [id]="users[1].id"
-      [avatar]="users[1].avatar"
-      [name]="users[1].name"
-      (select)="onSelectUser($event)"
-      />
-      
+      <app-user [user]="users[1]" 
+      (select)="onSelectUser($event)"/>
     </li>
 
+    <li>
+      <app-user [user]="users[2]" 
+      (select)="onSelectUser($event)"/>
+    </li>
+
+
+    <!-- FORMATO ANTIGUO, ANTES DE SIMPLIFICAR LAS PROPIEDADES A UN OBJETO USER
     <li>
       <app-user 
       [id]="users[2].id"
@@ -33,10 +32,10 @@
       [name]="users[2].name"
       (select)="onSelectUser($event)"
       />
-    </li>
+    </li> -->
 
     <app-tasks 
-      [name]="selectedUser.name"
+      [name]="selectedUser?.name"
     />
 
 

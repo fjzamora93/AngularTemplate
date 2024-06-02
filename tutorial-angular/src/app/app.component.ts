@@ -19,10 +19,11 @@ export class AppComponent {
   selectedUserId = 'ul';
 
   get selectedUser() {
-    return this.users.find((user) => user.id === this.selectedUserId)!;
+    return this.users.find((user) => user.id === this.selectedUserId); //Si pusiéramos una ! al final sería que va a encontrar algún resultado sí o sí.
   }
 
   onSelectUser(id: string) {
+    console.log('User selected AHORA', id)
     this.selectedUserId = id;
   }
 }
