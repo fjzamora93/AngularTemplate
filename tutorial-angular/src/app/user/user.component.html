@@ -1,13 +1,21 @@
 
 <div>
-
     <button (click)="onSelectUser()" >
+    <!-- ENFOQUE CLÁSICO-->
         <img 
             [src]="imagePath" 
             [alt] = "name"
         />
         <span> {{ name }} </span>
-      
+
+    <!-- ENFOQUE CON SIGNALS
+        <img 
+            [src]="imagePathSignals()" 
+            [alt] = "name"
+        />
+        <span> {{ nameSignals() }} </span>
+    -->
+
     </button>
 </div>
 
