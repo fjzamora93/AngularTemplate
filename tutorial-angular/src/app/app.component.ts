@@ -15,4 +15,8 @@ export class AppComponent {
   title = 'tutorial-angular';
   //Podemos exportar desde Components al resto de componentes desde aquí
   users = DUMMY_USERS;
+  
+  onSelectUser(id: string) {
+    console.log(`User ${id} selected`);
+  }
 }
