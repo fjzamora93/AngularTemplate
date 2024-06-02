@@ -7,21 +7,13 @@
 
 <main>
   <ul id="users">
-    <li>
-      <app-user [user]="users[0]" 
-      (select)="onSelectUser($event)"/>
-        
-    </li>
 
-    <li>
-      <app-user [user]="users[1]" 
-      (select)="onSelectUser($event)"/>
-    </li>
-
-    <li>
-      <app-user [user]="users[2]" 
-      (select)="onSelectUser($event)"/>
-    </li>
+    <!---El track es el identificador único que va a utilizar a la hora de hacer el loop-->
+    @for (user of users; track user.id) {
+      <li>
+        <app-user [user]="user" (select)="onSelectUser($event)"/>
+      </li>
+    }
 
 
     <!-- FORMATO ANTIGUO, ANTES DE SIMPLIFICAR LAS PROPIEDADES A UN OBJETO USER
