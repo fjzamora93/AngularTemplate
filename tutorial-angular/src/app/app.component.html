@@ -8,12 +8,22 @@
 <main>
   <ul id="users">
 
+
+    <!--- USO DEL FOR E IF DE ANGULAR 17. VERSIONES ANTERIORES USAN UNA SINTAXIS DISTINTA-->
     <!---El track es el identificador único que va a utilizar a la hora de hacer el loop-->
     @for (user of users; track user.id) {
       <li>
         <app-user [user]="user" (select)="onSelectUser($event)"/>
       </li>
     }
+  </ul>
+
+  @if (selectedUser){
+    <app-tasks [name]="selectedUser.name"/>
+  } @else {
+    <p id="fallback">Selecciona un usuario</p>
+  }
+
 
 
     <!-- FORMATO ANTIGUO, ANTES DE SIMPLIFICAR LAS PROPIEDADES A UN OBJETO USER
@@ -26,10 +36,7 @@
       />
     </li> -->
 
-    <app-tasks 
-      [name]="selectedUser?.name"
-    />
+    
 
-
-  </ul>
+  
 </main>

@@ -1,3 +1,7 @@
+
+
+
+
 Para crear estructuras de carpetas para los componentes automáticamente se usa el siguiente comando:
 
     ng g c <nombre-de-componente>

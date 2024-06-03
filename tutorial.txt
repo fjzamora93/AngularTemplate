@@ -51,3 +51,8 @@
         npm install
     
     Esto solo será necesario hacerlo una vez para tener instaladas todas las dependencias.
+
+#5 CREACIÓN DE COMPONENTES
+
+    ng g c nombreComponente
+    ng g c directorio/componente --skip-tests
