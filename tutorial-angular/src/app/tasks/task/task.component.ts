@@ -3,9 +3,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 interface Task{
   id: string;
-  name: string;
-  description: string;
-  idUser: string;
+  title: string;
+  summary: string;
+  userId: string;
+  dueDate:string;
 }
 
 @Component({
@@ -18,5 +19,6 @@ interface Task{
 
 export class TaskComponent {
   @Input() task?: Task;
-  
+
+
 }

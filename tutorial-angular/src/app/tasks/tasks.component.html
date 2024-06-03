@@ -10,12 +10,15 @@
 
     <!--- PARA COMPLETAR EL CÓDIGO, TIENES QUE ITERAR SOBRE CADA TASK DE TAL FORMA QUE LE DIGAS AL IMPUT LO QUE ES UN TASK-->
     <ul>
-        @for (task of tasks; track task.id){
+        @if (selectedUserTasks.length === 0){
+            <p id="fallback">Bien hecho! No hay tareas pendientes</p>
+        } @else {
+        @for (task of selectedUserTasks; track task.id){
             <li>
                 <app-task [task]="task"></app-task>
             </li>
         }
-        
+    }
     </ul>
 
 </section>
