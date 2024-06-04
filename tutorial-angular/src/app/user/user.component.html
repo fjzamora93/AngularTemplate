@@ -1,6 +1,6 @@
 
 <div>
-    <button (click)="onSelectUser()" >
+    <button  [class.active]="selected" (click)="onSelectUser()" >
     <!-- ENFOQUE CLÁSICO-->
         <img 
             [src]="imagePath" 

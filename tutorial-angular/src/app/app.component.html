@@ -13,7 +13,7 @@
     <!---El track es el identificador único que va a utilizar a la hora de hacer el loop-->
     @for (user of users; track user.id) {
       <li>
-        <app-user [user]="user" (select)="onSelectUser($event)"/>
+        <app-user [user]="user" [selected]="user.id === selectedUserId" (select)="onSelectUser($event)"/>
       </li>
     }
   </ul>

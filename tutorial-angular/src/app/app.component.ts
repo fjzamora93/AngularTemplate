@@ -22,6 +22,7 @@ export class AppComponent {
     return this.users.find((user) => user.id === this.selectedUserId); //Si pusiéramos una ! al final sería que va a encontrar algún resultado sí o sí.
   }
 
+  //Si te fijas, en user.component tienes un método que se llama onSelectUser, que emite un evento. Esto es lo que asignará el valor de selectedUserId.
   onSelectUser(id: string) {
     console.log('User selected AHORA', id)
     this.selectedUserId = id;

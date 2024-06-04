@@ -1,16 +1,13 @@
 
 import { Component, Input, Output, EventEmitter, input, output, computed } from '@angular/core';
+import { User } from './user.model';
 
 //Input, Output, EventEmitter es el decorator para el sistema clásico, 
 //input, output y computed funciones de Signals.
 
 //CREAMOS UN INTERFACE DE USER
 
-interface User {
-  id: string;
-  avatar: string;
-  name: string;
-}
+
 
 @Component({
   selector: 'app-user',
@@ -31,7 +28,7 @@ export class UserComponent {
   // LAS TRES LÍNEAS ANTERIORES LAS VAMOS A SIMPLIFICAR CON UN INTERFACE, QUE QUEDARÁ ASÍ:
 
   @Input({ required: true}) user! : User;
-
+  @Input({ required: true}) selected!:boolean;
   @Output() select = new EventEmitter();
   //selectSignals = output<string>(); FORMA ALTERNATIVA AL Output, pero hace lo mismo y no cambia nada.
 
