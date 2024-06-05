@@ -12,7 +12,12 @@ import { type Task } from './task.model'; //Importamos la interfaz Task desde ta
 })
 
 export class TaskComponent {
-  @Input() task?: Task;
+  @Input({ required: true }) task!: Task;
+  @Output() select = new EventEmitter();
 
+onSelectTask(){
+  console.log('Task selected', this.task.id);
+  this.select.emit(this.task.id); 
+}
 
 }

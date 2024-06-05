@@ -13,6 +13,7 @@ import { DUMMY_TASKS } from './dummy-tasks';
 })
 export class TasksComponent {
   tasks = DUMMY_TASKS;
+ 
   //En este caso vamos a usar un signo de interrogación, que es como decimos que es posible que no haya un valor y somos conscientes de ello.
   @Input() name?: string; //Otra alternativa es @Input() name: string = string | undefined;
   @Input() id!: string;
@@ -20,14 +21,17 @@ export class TasksComponent {
 
 
   get selectedUserTasks() {
-    let taskList: Array<any> = [];
-    taskList = this.tasks.filter((task) => task.userId === this.id);
-    return taskList;
+    return this.tasks.filter((task) => task.userId === this.id);
   }
-
 
   onSelectUser(id: string){
     this.select.emit(this.name); 
   }
+
+  onSelectTask(id: string){
+    console.log(id, ' ------- ', this.selectedUserTasks);
+    this.tasks = this.selectedUserTasks.filter((task) => task.id !== id);
+  }
+  
 
 }
