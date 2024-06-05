@@ -1,6 +1,7 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskComponent } from '../tasks/task/task.component'; 
+import { NewTaskComponent } from './new-task/new-task.component';
 import { DUMMY_TASKS } from './dummy-tasks';
 
 
@@ -9,10 +10,11 @@ import { DUMMY_TASKS } from './dummy-tasks';
     standalone: true,
     templateUrl: './tasks.component.html',
     styleUrl: './tasks.component.css',
-    imports: [TaskComponent]
+    imports: [TaskComponent, NewTaskComponent]
 })
 export class TasksComponent {
   tasks = DUMMY_TASKS;
+  isAddingTask: boolean = false;
  
   //En este caso vamos a usar un signo de interrogación, que es como decimos que es posible que no haya un valor y somos conscientes de ello.
   @Input() name?: string; //Otra alternativa es @Input() name: string = string | undefined;
@@ -33,5 +35,14 @@ export class TasksComponent {
     this.tasks = this.selectedUserTasks.filter((task) => task.id !== id);
   }
   
+  onStartAddTask(){
+    if (this.isAddingTask === true){
+      this.isAddingTask = false;
+    } else {
+      this.isAddingTask = true;
+    }
+      console.log('Añadir tarea = ', this.isAddingTask);
+  }
+
 
 }

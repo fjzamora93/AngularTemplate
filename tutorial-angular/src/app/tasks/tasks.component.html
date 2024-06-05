@@ -3,11 +3,16 @@
     <header>
         <h2> {{  name  }} </h2>
         <menu>
-            <button>Add task</button>
+            <button (click)="onStartAddTask()">Add task</button>
         </menu>
-
     </header>
 
+    @if (this.isAddingTask === true){
+        <app-new-task/> 
+    }
+    
+    
+    
     <!--- PARA COMPLETAR EL CÓDIGO, TIENES QUE ITERAR SOBRE CADA TASK DE TAL FORMA QUE LE DIGAS AL IMPUT LO QUE ES UN TASK-->
     <ul>
         @if (selectedUserTasks.length === 0){
