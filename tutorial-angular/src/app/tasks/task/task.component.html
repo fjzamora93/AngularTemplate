@@ -1,9 +1,12 @@
+<!--- app-card es nuestro wrapper, que podemos utilizar también en user, por ejemplo-->
 
-<article>
-    <h2> {{ task!.title }} </h2>
-    <time> {{ task!.dueDate }}</time>
-    <p>{{ task!.summary }}</p>
-    <p class="actions">
-        <button (click)="onSelectTask()"> Complete </button>
-    </p>
-</article>
+<app-card>
+    <article>
+        <h2> {{ task!.title }} </h2>
+        <time> {{ task!.dueDate }}</time>
+        <p>{{ task!.summary }}</p>
+        <p class="actions">
+            <button (click)="onSelectTask()"> Complete </button>
+        </p>
+    </article>
+</app-card>

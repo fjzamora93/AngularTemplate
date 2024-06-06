@@ -1,6 +1,7 @@
 
 import { Component, Input, Output, EventEmitter, input, output, computed } from '@angular/core';
 import { User } from './user.model';
+import { CardComponent } from "../shared/card/card.component";
 
 //Input, Output, EventEmitter es el decorator para el sistema clásico, 
 //input, output y computed funciones de Signals.
@@ -10,11 +11,11 @@ import { User } from './user.model';
 
 
 @Component({
-  selector: 'app-user',
-  standalone: true,
-  imports: [],
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+    selector: 'app-user',
+    standalone: true,
+    templateUrl: './user.component.html',
+    styleUrl: './user.component.css',
+    imports: [CardComponent]
 })
 
 /*Aquí es donde vamos a definir las propiedades de nuestro componente.

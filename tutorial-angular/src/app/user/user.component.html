@@ -1,21 +1,24 @@
+<!-- app-card es el wrapper, que utilizaremos también en task -->
 
-<div>
-    <button  [class.active]="selected" (click)="onSelectUser()" >
-    <!-- ENFOQUE CLÁSICO-->
-        <img 
-            [src]="imagePath" 
-            [alt]="user.name"
-        />
-        <span> {{ user.name }} </span>
+<app-card>
+    <div>
+        <button  [class.active]="selected" (click)="onSelectUser()" >
+        <!-- ENFOQUE CLÁSICO-->
+            <img 
+                [src]="imagePath" 
+                [alt]="user.name"
+            />
+            <span> {{ user.name }} </span>
 
-    <!-- ENFOQUE CON SIGNALS
-        <img 
-            [src]="imagePathSignals()" 
-            [alt] = "name"
-        />
-        <span> {{ nameSignals() }} </span>
-    -->
+        <!-- ENFOQUE CON SIGNALS
+            <img 
+                [src]="imagePathSignals()" 
+                [alt] = "name"
+            />
+            <span> {{ nameSignals() }} </span>
+        -->
 
-    </button>
-</div>
+        </button>
+    </div>
+</app-card>
 
