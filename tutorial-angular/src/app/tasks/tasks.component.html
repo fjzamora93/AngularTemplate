@@ -9,7 +9,7 @@
 
     @if (this.isAddingTask === true){
         <!--- Fíjate que el select coge como parámetro cualquier función...-->
-        <app-new-task (cancel)="onCancelAddTask()"/> 
+        <app-new-task (cancel)="onCancelAddTask()" (add)="onSubmitAddTask($event)"/> 
     }
     
     

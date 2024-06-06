@@ -1,6 +1,8 @@
 
+import { type NewTaskData } from '../task/task.model';
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-new-task',
@@ -12,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 export class NewTaskComponent {
   @Output() cancel = new EventEmitter<void>();
+  @Output() add = new EventEmitter<NewTaskData>();
   enteredTitle = '';
   enteredSummary = '';
 
@@ -23,7 +26,14 @@ export class NewTaskComponent {
     this.cancel.emit();
   }
 
+ 
   onSubmit(){
-    console.log('Se ha enviado el formulario al cliente: ', this.enteredTitle, this.enteredSummary, this.enteredDueDate);
+    this.add.emit({
+      title: this.enteredTitle,
+      summary: this.enteredSummary,
+      dueDate: this.enteredDueDate() //al ser un signals, aquí va la función
+    });
+    console.log('añadiendo', this.enteredTitle);
   }
+
 }
