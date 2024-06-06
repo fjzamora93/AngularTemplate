@@ -36,12 +36,12 @@ export class TasksComponent {
   }
   
   onStartAddTask(){
-    if (this.isAddingTask === true){
-      this.isAddingTask = false;
-    } else {
       this.isAddingTask = true;
-    }
       console.log('Añadir tarea = ', this.isAddingTask);
+  }
+
+  onCancelAddTask(){
+    this.isAddingTask = false;
   }
 
 

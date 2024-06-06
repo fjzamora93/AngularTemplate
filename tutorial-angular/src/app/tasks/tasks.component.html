@@ -8,7 +8,8 @@
     </header>
 
     @if (this.isAddingTask === true){
-        <app-new-task/> 
+        <!--- Fíjate que el select coge como parámetro cualquier función...-->
+        <app-new-task (select)="onCancelAddTask()"/> 
     }
     
     

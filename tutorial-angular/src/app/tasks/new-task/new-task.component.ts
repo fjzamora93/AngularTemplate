@@ -11,9 +11,10 @@ import { type Task } from '../task/task.model';
 })
 
 export class NewTaskComponent {
+  @Output() select = new EventEmitter<void>();
 
-
-  confirmar(){
-    console.log('Confirmar tarea');
+  onCancel(){
+    console.log('Emitimos un evento, pero no hacemos nada más. Es al recibir el evento cuando se activa la función que cerrará');
+    this.select.emit();
   }
 }

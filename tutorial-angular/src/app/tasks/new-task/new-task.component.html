@@ -1,21 +1,25 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" />
+    </p>
 
-<form> <fieldset> 
-    <legend> Add New Task </legend>
-    <div id="new-task">
-        <label for="taskTitle">Task Title </label> 
-        <input type="text" class="form-control" id="taskTitle"  name="taskTitle" required> <br>
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary"></textarea>
+    </p>
 
-        <label for="taskid">Task ID </label> 
-        <input type="text" class="form-control" id="taskid"  name="taskid" required> <br>
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" />
+    </p>
 
-        <label for="tasksummary">Task Summary </label>
-        <input type="textarea" class="form-control" id="tasksummary"  name="tasksummary" required> <br>
-        
-        <label for="dueDate">Task Date</label>
-        <input type="date" class="form-control" id="dueDate"  name="dueDate" required> <br>
-        
-        
-        <input type="submit" value="Add Task" (click)="confirmar()">
-    </div>
-</fieldset></form>
-
+    <p class="actions">
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <button type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
