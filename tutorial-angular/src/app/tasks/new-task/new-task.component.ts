@@ -1,7 +1,8 @@
 
 import { type NewTaskData } from '../task/task.model';
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DUMMY_TASKS, TaskService } from '../tasks.service';
 
 
 @Component({
@@ -13,27 +14,30 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class NewTaskComponent {
-  @Output() cancel = new EventEmitter<void>();
-  @Output() add = new EventEmitter<NewTaskData>();
+  @Input({ required: true }) UserId!: string;
+  @Output() close = new EventEmitter<void>();
   enteredTitle = '';
   enteredSummary = '';
+  enteredDueDate = '';
 
-  //Enfoque con signal: solo hay que meter la función, no cambia nada en el HTML
-  enteredDueDate = signal('');
+  //Otra forma de instanciar el taskService con angular de forma transveral (la instancia es única para toda la aplicación)
+  private taskService = inject(TaskService) //===   constructor(private taskService: TaskService){} Elige el que más te guste de los dos.
+
+  onSubmit(){
+    this.taskService.addTask({ 
+      title: this.enteredTitle, 
+      summary: this.enteredSummary, 
+      dueDate: this.enteredDueDate 
+    }, this.UserId);
+    this.close.emit();
+  }
 
   onCancel(){
     console.log('Emitimos un evento, pero no hacemos nada más. Es al recibir el evento cuando se activa la función que cerrará');
-    this.cancel.emit();
+    this.close.emit();
   }
 
  
-  onSubmit(){
-    this.add.emit({
-      title: this.enteredTitle,
-      summary: this.enteredSummary,
-      dueDate: this.enteredDueDate() //al ser un signals, aquí va la función
-    });
-    console.log('añadiendo', this.enteredTitle);
-  }
+  
 
 }

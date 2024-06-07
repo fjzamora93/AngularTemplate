@@ -3,10 +3,12 @@
 <app-card>
     <article>
         <h2> {{ task!.title }} </h2>
-        <time> {{ task!.dueDate }}</time>
+
+        <!-- PIPES: A continuación vemos la sintaxis de LOS PIPES, que permite dar formato a algunos componentes de Angular, como la fecha-->
+        <time> {{ task!.dueDate | date:'fullDate' }}</time>
         <p>{{ task!.summary }}</p>
         <p class="actions">
-            <button (click)="onSelectTask()"> Complete </button>
+            <button (click)="onCompleteTask()"> Complete </button>
         </p>
     </article>
 </app-card>
