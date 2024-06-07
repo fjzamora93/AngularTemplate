@@ -15,7 +15,9 @@ import { TaskService } from '../tasks.service';
 
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
-  @Output() complete = new EventEmitter();
+
+
+  //y aquí volvemos a poner nuestro constructor transversal de TaskService
   constructor (private taskService: TaskService){}
 
 onCompleteTask(){
