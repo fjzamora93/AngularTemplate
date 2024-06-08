@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskComponent } from '../tasks/task/task.component'; 
 import { NewTaskComponent } from './new-task/new-task.component';
 import { DUMMY_TASKS, TaskService } from './tasks.service';
+import { type Task } from './task/task.model';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class TasksComponent {
   @Input() name?: string; //Otra alternativa es @Input() name: string = string | undefined;
   @Input({ required:true }) UserId!: string;
   @Output() select = new EventEmitter();
-  tasks = DUMMY_TASKS;
+  taskToEdit: Task | null = null;
   isAddingTask: boolean = false;
 
   //La instancia de TaskService se inyecta en el constructor, lo qu ela convierte en una clase TRANSVERSAL a todos los componentes.
@@ -39,11 +40,20 @@ export class TasksComponent {
   
   onStartAddTask(){
       this.isAddingTask = true;
+      this.taskToEdit = null;
       console.log('Añadiendo tarea = ', this.isAddingTask);
   }
 
   onCloseAddTask(){
     this.isAddingTask = false;
+    this.taskToEdit = null;
+  }
+
+  onEditTask(task: Task){
+    this.isAddingTask = true;
+    this.taskToEdit = task;
+    console.log('Recibiendo tarea desde el padre: ', this.taskToEdit, this.isAddingTask);
+    
   }
 
 }

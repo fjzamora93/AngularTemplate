@@ -44,8 +44,16 @@ export class TaskService {
     this.saveTaskList();
   }
 
-  //Elimina (completa) una tarea de la lista de tareas
+  replaceTask(selectedTaskId: string, replacementTask: Task){
+    let taskIndex = this.taskList.findIndex((task) => task.id === selectedTaskId);
+    console.log('taskIndex: ', taskIndex);
+    if (taskIndex !== -1) {
+      this.taskList[taskIndex] = replacementTask;
+      this.saveTaskList();
+    }
+  }
 
+  //Elimina (completa) una tarea de la lista de tareas
   removeTask(selectedTaskId: string){
     this.taskList = this.taskList.filter((task) => task.id !== selectedTaskId);
     this.saveTaskList();

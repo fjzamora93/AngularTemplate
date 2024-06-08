@@ -8,8 +8,7 @@
     </header>
 
     @if (this.isAddingTask === true){
-        <!--- Fíjate que el select coge como parámetro cualquier función...-->
-        <app-new-task (close)="onCloseAddTask()"  [UserId]="UserId"/> 
+        <app-new-task (close)="onCloseAddTask()"  [UserId]="UserId" [taskEdit]="taskToEdit"/> 
     }
     
     
@@ -21,7 +20,7 @@
         } @else {
         @for (task of selectedUserTasks; track task.id){
             <li>
-                <app-task [task]="task" ></app-task>
+                <app-task [task]="task" (edit)="onEditTask($event)"></app-task>
             </li>
         }
     }

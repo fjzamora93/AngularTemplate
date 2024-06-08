@@ -15,6 +15,7 @@ import { TaskService } from '../tasks.service';
 
 export class TaskComponent {
   @Input({ required: true }) task!: Task;
+  @Output() edit = new EventEmitter<Task>();
 
 
   //y aquí volvemos a poner nuestro constructor transversal de TaskService
@@ -23,6 +24,11 @@ export class TaskComponent {
 onCompleteTask(){
   console.log('Task selected', this.task.id);
   this.taskService.removeTask(this.task.id);
+}
+
+onEditTask(){
+    //console.log(`Emitiendo tarea desde task.component: ${this.task.id} `)
+    this.edit.emit(this.task);
 }
 
 }
