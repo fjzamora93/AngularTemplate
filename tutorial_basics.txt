@@ -56,3 +56,5 @@
 
     ng g c nombreComponente
     ng g c directorio/componente --skip-tests
+
+    

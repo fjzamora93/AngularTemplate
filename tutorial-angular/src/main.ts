@@ -12,3 +12,17 @@ bootstrapApplication(AppComponent, appConfig)
 
 //Y llamamos a esta función para que aparezca en pantalla.
 bootstrapApplication(HeaderComponent, appConfig)
+
+
+//!CÓMO QUEDARÍA EL CÓDIGO EN CASO DE USAR MÓDULOS:
+
+/**
+ * import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';  
+ * import { AppModule } from './app/app.module';
+ * 
+ * platformBrowserDynamic().bootstrapModule(AppModule);
+ * 
+ */
+
+
+//!Y hasta aquí el documento main.ts
