@@ -19,7 +19,7 @@
     //!Y llamamos a esta función para que aparezca en pantalla.
     bootstrapApplication(HeaderComponent, appConfig)
     @NgModule({
-        //!Aquí importaremos los componentes que vayamos creando y que NO SEAN standalone
+        //!Aquí importaremos los componentes que vayamos creando y que NO SEAN modules (por ejemplo, el componente AppComponent, después migrarlo para que deje de ser standalone)
         declarations: [
             AppComponent,
             HeaderComponent,
@@ -29,7 +29,8 @@
             TasksComponent,
             NewTaskComponent,
         ],
-        //!Aquí importaremos los componentes que vayamos creando y que SEAN standalone
+        //!Aquí importaremos los componentes que vayamos creando y que sean MODULE o STANDALONE (los standalone también pueden ir aquí) 
+        //!(por ejemplo, vamos a convertir CardComponent en un módulo llamado SharedModule)
         imports: [
             BrowserModule,
             FormsModule,

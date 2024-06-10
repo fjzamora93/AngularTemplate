@@ -11,6 +11,10 @@
     En una terminal de windows, ejecutar el siguiente comando:
         
             npm install -g @angular/cli
+
+            o
+
+            npm install //para instalar todas las dependencias
     
     Paso 3. Crear un nuevo proyecto
 

@@ -5,7 +5,7 @@ import { type NewTaskData } from './task/task.model';
 
 //NOTA: localStorage estará disponible SIEMPRE ya que forma parte de la API del navegador. No hay que importarlo ni nada.
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' }) // Esto hace que el servicio esté disponible en toda la aplicación.
 export class TaskService {
   
   private taskList: Task[] = DUMMY_TASKS;
@@ -31,6 +31,17 @@ export class TaskService {
     console.log(' ------->', UserId);
     return this.taskList.filter((task) => task.userId === UserId);
   }
+
+  /**MISMA FUNCIÓN PERO HECHA CON UNA FUNCIÓN ANÓNIMA
+
+   getUserTasks(UserId: string){
+        listaFiltrada = this.taskList.filter(function(task) {
+            return task.userId === UserId;
+        });
+        return listaFiltrada;
+    }
+   
+   */
 
   //Añade una tarea a la lista de tareas
   addTask(taskdata: NewTaskData, UserId: string){

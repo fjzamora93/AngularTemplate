@@ -2,7 +2,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TaskComponent } from '../tasks/task/task.component'; 
 import { NewTaskComponent } from './new-task/new-task.component';
-import { DUMMY_TASKS, TaskService } from './tasks.service';
+import { TaskService } from './tasks.service';
 import { type Task } from './task/task.model';
 
 
