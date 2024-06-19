@@ -1,30 +1,3 @@
-# Incapsulation
-
-permite que el css de un componente sea global. NO es tan habitual como el host.
-
-ViewEncapsulation.Emulated (por defecto): Los estilos se encapsulan de manera que solo afecten al componente en el que están definidos, pero sin usar Shadow DOM. Angular logra esto emulando un Shadow DOM mediante el prefijo de los estilos con un atributo único.
-
-ViewEncapsulation.None: No hay encapsulación de estilos. Los estilos definidos en el componente afectan a todo el documento, es decir, son globales.
-
-ViewEncapsulation.ShadowDom: Utiliza Shadow DOM nativo para encapsular los estilos, asegurando que los estilos de un componente no afecten a otros.
-
-# Host 
-
-HostBinding: Permite enlazar propiedades del componente al elemento host. (video 113)
-
-```typescript
-    selector: 'app-control',
-    host {
-        class: 'control'
-    }
-```
-
-Automáticamente, el selector quedaría así:
-```html
-<app-control class='control'>
-```
-
-Pero realmente nosotros ya habríamos añadido la clase por antelación, así que no sería necesario.
 
 
 # CONCEPTOS FUNDAMENTALES (DE MÁS IMPORTANTE A MENOS IMPORTANTE)

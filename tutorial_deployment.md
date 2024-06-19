@@ -24,8 +24,12 @@ Esta sería la forma básica... Que básicamente es una compilación del código
 
 ## Despliegue en github-pages
 
+### 1. Habilitar gh-pages
+Habilitar gh-pages desde github.
+Y asegurarte de que esta es la página que se utiliza.
+Si por lo que sea utilizas la máster, aparecer la página por defecto de Angular.
 
-
+### 2. Compilación 
 Compilar en tu github:
 
     npm run build -- --base-href "https://<tu-usuario>.github.io/<tu-repo>/"
@@ -34,7 +38,36 @@ En este caso:
 
     npm run build -- --base-href "https://fjzamora93.github.io/AngularTutorial/"
     
-
-Instalar Angular Globalmente:
+Después procedemos a instalar Angular Globalmente
 
     npm install -g angular-cli-ghpages
+
+
+### 3. Despliegue del proyecto
+
+Para desplegar el proyecto usaremos este comando:
+
+    npx angular-cli-ghpages --dir=dist/<nombre-directorio-local>/browser
+
+En este último paso remplazza <nombre-directorio> por el nombre de lo que se haya generado dentro de la carpeta dist, que puede coger un nombre random.
+
+**!!!IMPORATNTE:** tienes que poner como ruta después del dist/ exactamente el directorio en el que esté el index. Si se te han generado 200 mierdas por el camino, pon la ruta hast aque llegues al directorio donde está tu index.
+
+Eso quiere decir que a veces la ruta será esta:
+    npx angular-cli-ghpages --dir=dist/mi-proyecto
+
+Y otras veces será esta:
+    npx angular-cli-ghpages --dir=dist/mi-proyecto/browser
+
+Solamente asegúrate que la que ejecutes tiene dentro el index, que es lo que va a coger gh-pages.
+
+
+### 4. Verificación de errores
+
+Una vez estás allí, asegúrate de que las rutas que hay dentro no son locales..por ejemplo:
+
+LA SIGUIENTE VA A DAR ERROR (no va a cargar todo, solo una parte): 
+    <base href="F:/Git/InvestCalculator/">
+
+En su lugar utiliza esta:
+    <base href="/InvestCalculator/">
