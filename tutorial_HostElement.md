@@ -1,0 +1,113 @@
+# Incapsulation & Host Elements
+
+Una de las grandes ventajas de Angular, especialmente para proyectos grandes, es disminuir la dependencia del uso de clases o ID's para el CSS y crear una "encapsulación" dentro de cada componente para que su CSS se quede dentro y no salpique al resto de componentes. 
+
+En esta sección vamos a ver dos formas de usar esta encapsulación (Incapsulation y Host Element).
+
+## 1. Incapsulation
+
+Permite que el css de un componente sea global o mantenga su "scope" dentro de su componente. El código quedaría así:
+
+```typescript
+
+    import { Component, ViewEncapsulation } from '@angular/core';
+
+    @Component({
+        selector: 'app-emulated',
+        template: `<p>This is an Emulated Encapsulation Component</p>`,
+        styles: [`p { color: blue; }`],
+        encapsulation: ViewEncapsulation.Emulated // ViewEncapsulation.None // ViewEncapsulation.ShadowDom
+        })
+
+    export class EmulatedComponent { }
+
+```
+### Los tres tipos de encapsulación: 
+
+**ViewEncapsulation.Emulated** (por defecto): Los estilos se encapsulan. Funciona para el 99% de los casos, pero a veces hay errores.
+
+**ViewEncapsulation.None**: No hay encapsulación de estilos. Los estilos son globales.
+
+**ViewEncapsulation.ShadowDom**: Utiliza Shadow DOM, que es INFALIBLE. Digamos que es como el Emultaed que viene por defecto, pero más potente.
+
+
+# Host Elements
+
+## 1. host: { ... } en el Decorador del Componente
+
+El host en el decorador @Component se utiliza para asignar propiedades y atributos al elemento anfitrión del componente desde el código TypeScript. Esto incluye agregar clases, manejar eventos, y otros atributos que deben estar presentes en el elemento anfitrión tan pronto como se instancie el componente.
+
+```typescript
+
+    @Component({
+        selector: 'app-example',
+        templateUrl: './example.component.html',
+        styleUrls: ['./example.component.css'],
+        host: {
+            class: 'isSpecial',
+            '(click)': 'onClick()',
+            'role': 'button'
+        }
+    })
+    export class ExampleComponent {
+    isSpecial = true;
+
+    onClick() {
+        console.log('Host element clicked!');
+        }
+    }
+```
+
+Si nos vamos al DOM y examinamos el emento, veríamos algo parecido a esto:
+
+```html
+    <app-control class='isSpecial' click='onClick()'>
+```
+
+
+## 2. El selector :host dentro del CSS
+
+El selector :host en Angular se utiliza dentro de los estilos de un componente para aplicar estilos al elemento anfitrión (host) del componente. El elemento anfitrión es el elemento HTML en el que se inserta el componente.
+
+## ¿Cuándo usar :host?
+Usas :host cuando necesitas aplicar estilos directamente al elemento que contiene el componente, no a los elementos hijos dentro de él. Esto es útil, por ejemplo, cuando quieres cambiar el estilo del contenedor del componente basado en alguna condición o simplemente darle un estilo específico.
+
+En otras palabras, puedes aplicar directamente estilos al anfitrión sin tener que modificar el decorador de typescript incluyendo host{ class: 'tu-clase'}
+
+
+HostBinding: Permite enlazar propiedades del componente al elemento host. 
+(video 113)
+
+```css
+    :host {
+        display: block;
+        border: 1px solid black;
+        }
+
+    :host head {
+        background-color: yellow;
+        }
+```
+
+Automáticamente, este estilo se aplicaría al nuestro host. Por ejemplo, <nuestro-componente> </nuestro-componente> directamente tendría aplicado el estilo si lo incluyésemos de esta forma en el css, por lo queno tendríamos que estar aplicando envolventes y clases para conseguir el estilo.
+
+
+## Otras formas de acceder a los Host Elements
+
+La forma vista hasta ahora es la RECOMENDADA de hacerlo, aunque existe otra forma que es usando el decorador @HostBinding y @HostListener.
+Para evitar confusión, no vamos a prestarle mayor atención.
+
+Aún así, esta sería la sintaxis:
+
+```typescript
+
+    export class ControlComponent{
+        @HostBinding('class') className = 'control';
+        @HostListener('click') onClick(){
+            console.log('clicked');
+        } 
+  
+        label = input.requried<string>();
+    }
+
+```

@@ -56,7 +56,7 @@ Estos conceptos son importantes para entender las estrategias de renderizado y c
 **Importancia:** Media
 **Descripción:** Las pipes en Angular se utilizan para transformar datos en plantillas. Se aplican mediante el uso del operador | y permiten transformar datos como fechas, monedas, y otros formatos. Aunque no es tan crítico como otros conceptos, conocer y utilizar pipes puede mejorar significativamente la presentación de datos en una aplicación Angular.
 
-# Code splittling & Deferrable views
+# 6. Code splittling & Deferrable views
 **Importancia**: Media
 **Descripción**: La división de código (code splitting) y las vistas diferibles permiten optimizar la carga y el rendimiento de una aplicación Angular. Esto se logra cargando módulos y componentes sólo cuando son necesarios (lazy loading). Es especialmente útil para grandes aplicaciones, pero puede considerarse un concepto más avanzado una vez que se dominan los fundamentos.
 
