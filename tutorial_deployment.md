@@ -38,7 +38,7 @@ En este caso:
 
     npm run build -- --base-href "https://fjzamora93.github.io/AngularTutorial/"
     
-Después procedemos a instalar Angular Globalmente
+Después procedemos a instalar Angular Globalmente (solo la primera vez)
 
     npm install -g angular-cli-ghpages
 
