@@ -1,42 +1,7 @@
-
-
-<router-outlet />
-
-<app-header></app-header>
-
-
 <main>
-  <ul id="users">
+  <app-learning-resources />
 
+  <hr />
 
-    <!--- USO DEL FOR E IF DE ANGULAR 17. VERSIONES ANTERIORES USAN UNA SINTAXIS DISTINTA-->
-    <!---El track es el identificador único que va a utilizar a la hora de hacer el loop-->
-    @for (user of users; track user.id) {
-      <li>
-        <app-user [user]="user" [selected]="user.id === selectedUserId" (select)="onSelectUser($event)"/>
-      </li>
-    }
-  </ul>
-
-  @if (selectedUser){
-    <app-tasks [name]="selectedUser.name" [UserId]="selectedUser.id"/>
-  } @else {
-    <p id="fallback">Selecciona un usuario</p>
-  }
-
-
-
-    <!-- FORMATO ANTIGUO, ANTES DE SIMPLIFICAR LAS PROPIEDADES A UN OBJETO USER
-    <li>
-      <app-user 
-      [id]="users[2].id"
-      [avatar]="users[2].avatar"
-      [name]="users[2].name"
-      (select)="onSelectUser($event)"
-      />
-    </li> -->
-
-    
-
-  
+  <app-auth />
 </main>
