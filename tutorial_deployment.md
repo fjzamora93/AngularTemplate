@@ -71,3 +71,7 @@ LA SIGUIENTE VA A DAR ERROR (no va a cargar todo, solo una parte):
 
 En su lugar utiliza esta:
     <base href="/InvestCalculator/">
+
+## Despliegue en Railway
+
+Para despliegue en Railway sin complicaciones, puedes conectar directamente con la página publicada en la rama de gh-pages. Esto generará menos problemas que intentar hacer el build directamente desde la rama master de github.
