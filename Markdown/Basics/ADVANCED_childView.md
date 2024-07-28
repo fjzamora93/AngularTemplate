@@ -18,10 +18,10 @@ Si dentro de
     `
     })
     export class ParentComponent implements AfterViewInit {
-    @ViewChildren(ChildComponent) childComponents: QueryList<ChildComponent>;
+        @ViewChildren(ChildComponent) childComponents: QueryList<ChildComponent>;
 
-    ngAfterViewInit() {
-        this.childComponents.forEach(childComponent => childComponent.greet());
-    }
+        ngAfterViewInit() {
+            this.childComponents.forEach(childComponent => childComponent.greet());
+        }
     }
 ```

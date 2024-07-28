@@ -1,7 +1,6 @@
 # Módulo vs Standlone
 
-Un módulo de Angular es un contenedor para los diferentes partes de una aplicación.
-Podríamos decir que dentro del módulo todo queda "empaquetado".
+El módulo es la alternativa al Standalone. Es más propio de proyectos grandes. Un módulo de Angular es un contenedor para los diferentes partes de una aplicación. Podríamos decir que dentro del módulo todo queda "empaquetado".
 
 Module y Standalone se pueden intercalar (un module puede tener standalone y viceversa).
 Pero hay que tener una serie de consideraciones al respecto.
