@@ -37,6 +37,7 @@ Compilar en tu github:
 En este caso:
 
     npm run build -- --base-href "https://fjzamora93.github.io/AngularTutorial/"
+    npm run build -- --base-href "https://fjzamora93.github.io/BakeryAppFront/"
     
 Después procedemos a instalar Angular Globalmente (solo la primera vez)
 
@@ -64,13 +65,24 @@ Solamente asegúrate que la que ejecutes tiene dentro el index, que es lo que va
 
 ### 4. Verificación de errores
 
+
+### Error basehref (index.html y angular.json)
+
+
 Una vez estás allí, asegúrate de que las rutas que hay dentro no son locales..por ejemplo:
 
-LA SIGUIENTE VA A DAR ERROR (no va a cargar todo, solo una parte): 
+LA SIGUIENTE LÍNEA del INDEX VA A DAR ERROR (no va a cargar todo, solo una parte): 
     <base href="F:/Git/InvestCalculator/">
 
 En su lugar utiliza esta:
     <base href="/InvestCalculator/">
+
+Por su parte, en angular.json, habrá que modificar esta misma línea del index para que concida exactamente:
+
+```json
+    "baseHref": "/BakeryAppFront/"
+```
+
 
 ## Despliegue en Railway
 
