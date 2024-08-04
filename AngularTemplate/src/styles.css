@@ -8,7 +8,6 @@ body {
   font-family: 'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(#e3f3f7, #dbf0e7);
   color: #1b1d1c;
   min-height: 100vh;
   margin: auto;
