@@ -19,6 +19,19 @@ import { environment } from '../../../environments/environment';
 })
 export class PostCreateComponent implements OnInit {
     posts: Post[] = []; // Define la propiedad posts
+    myPost: Post = {
+        _id: '',
+        title: '',
+        subtitle: '',
+        content: '',
+        list: [],
+        imgUrl: '',
+        attachedFile: '',
+        category: '',
+        creator: ''
+    }
+
+
     private apiUrl = `${environment.apiUrl}/posts`;
     constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -29,17 +42,18 @@ export class PostCreateComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-
     const { title, content } = form.value;
 
+    this.myPost.title = title;
+    this.myPost.content = content;
+    this.myPost._id = (Math.floor(Math.random() * 10000) + 1).toString();
+
     // Usa el token CSRF al agregar el post
-    this.postsService.addPost(title, content).subscribe(
+    this.postsService.addPost(this.myPost).subscribe(
       response => {
         console.log('Post added successfully:', response);
-        this.postsService.getPosts(); // Opcional: Actualiza la lista de posts después de agregar uno nuevo
-        console.log('Nueva lista de posts:', this.posts);
-        
-        form.resetForm(); // Restablece el formulario
+        this.postsService.getPosts(); // Actualiza la lista de posts después de agregar uno nuevo
+        form.resetForm(); 
       },
       error => {
         console.error('Error adding post:', error);

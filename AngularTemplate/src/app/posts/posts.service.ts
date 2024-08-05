@@ -22,13 +22,13 @@ export class PostsService {
         this.http.get<{ message: string; posts: Post[] }>(this.apiUrl, { withCredentials: true })
         .pipe(
             tap(postData => {
-            this.posts = postData.posts;
-            this.postsUpdated.next([...this.posts]);
-            console.log('Posts fetched:', this.posts);
+                this.posts = postData.posts;
+                this.postsUpdated.next([...this.posts]);
+                console.log('Posts fetched:', this.posts);
             }),
             catchError(error => {
-            console.error('Error fetching posts:', error);
-            return of({ message: '', posts: [] }); // Retorna un observable vacío en caso de error
+                console.error('Error fetching posts:', error);
+                return of({ message: '', posts: [] }); // Retorna un observable vacío en caso de error
             })
         )
         .subscribe(); // Suscribirse para iniciar la solicitud
@@ -41,15 +41,14 @@ export class PostsService {
 
 
     // Método para agregar un nuevo post
-    addPost(title: string, content: string): Observable<any> {
-        this.newPosts.push({ title, content }); // Agregar el nuevo post a la lista de nuevos posts
-        console.log('New posts:', this.newPosts);
+    addPost(post: Post): Observable<any> {
+        this.newPosts.push(post); 
+        console.log('NUEVO POST:', post);
 
         // Obtener encabezados con el token CSRF
         return this.csrfService.getHeaders().pipe(
         switchMap(headers => {
-            console.log('Headers en addPost:', headers);
-            const body = { title, content };
+            const body = post;
             return this.http.post<Post>(
                 this.apiUrl, 
                 body, 
@@ -64,7 +63,33 @@ export class PostsService {
         );
     }
 
-    
+    deletePost(postId: string): Observable<any> {
+        return this.csrfService.getHeaders().pipe(
+        switchMap(headers => {
+            console.log('Intentando borrar en el front:', postId);
+            return this.http.delete(this.apiUrl + '/' + postId, { headers, withCredentials: true }).pipe(
+                catchError(error => {
+                    console.error('Error deleting post:', error);
+                    return of(error);
+            })
+            );
+        })
+        );
+    }
+
+    updatePost(postId: string, post: Post): Observable<any> {
+        return this.csrfService.getHeaders().pipe(
+        switchMap(headers => {
+            const body = { post };
+            return this.http.put(this.apiUrl + '/' + postId, body, { headers, withCredentials: true }).pipe(
+            catchError(error => {
+                console.error('Error updating post:', error);
+                return of(error);
+            })
+            );
+        })
+        );
+    }
 
 
 }
