@@ -16,6 +16,7 @@ import { PostsService } from '../posts.service';
 })
 export class PostListComponent implements OnInit, OnDestroy {
     posts: Post[] = [];
+    private contador: number = 0;
     private postsSub?: Subscription;
     myPost : Post = {
         _id: '',
@@ -58,8 +59,18 @@ export class PostListComponent implements OnInit, OnDestroy {
     }
 
     onUpdate(postId: string) {
-        console.log(this.myPost);
-        this.postsService.updatePost(postId, this.myPost);
+        this.contador = this.contador + 1;
+        this.myPost.title = 'New title ' + (this.contador);
+        this.myPost.content = 'New content ' + (this.contador);
+        this.postsService.updatePost(postId, this.myPost).pipe(
+            tap(response => {
+                this.postsService.getPosts();
+            }),
+            catchError(error => {
+                console.error('Error updating post', error);
+                return of(null);
+            })
+        ).subscribe();
     }
 
 }

@@ -78,9 +78,10 @@ export class PostsService {
     }
 
     updatePost(postId: string, post: Post): Observable<any> {
+        console.log('Intentando actualizar en el front:', post);
         return this.csrfService.getHeaders().pipe(
         switchMap(headers => {
-            const body = { post };
+            const body = post;
             return this.http.put(this.apiUrl + '/' + postId, body, { headers, withCredentials: true }).pipe(
             catchError(error => {
                 console.error('Error updating post:', error);
