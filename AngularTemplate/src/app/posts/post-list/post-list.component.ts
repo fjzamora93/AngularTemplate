@@ -6,18 +6,19 @@ import { MaterialModule } from '../../material/material.module'; // Ruta al mód
 
 import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
+import { PostCreateComponent } from '../post-create/post-create.component';
 
 @Component({
     selector: 'app-post-list',
     standalone: true,
     templateUrl: './post-list.component.html',
     styleUrls: ['./post-list.component.css'],
-    imports: [CommonModule, MaterialModule]
+    imports: [CommonModule, MaterialModule, PostCreateComponent]
 })
 export class PostListComponent implements OnInit, OnDestroy {
     posts: Post[] = [];
-    private contador: number = 0;
     private postsSub?: Subscription;
+    editing: boolean = false;
     myPost : Post = {
         _id: '',
         title: '',
@@ -58,19 +59,23 @@ export class PostListComponent implements OnInit, OnDestroy {
         ).subscribe();
     }
 
-    onUpdate(postId: string) {
-        this.contador = this.contador + 1;
-        this.myPost.title = 'New title ' + (this.contador);
-        this.myPost.content = 'New content ' + (this.contador);
-        this.postsService.updatePost(postId, this.myPost).pipe(
-            tap(response => {
-                this.postsService.getPosts();
-            }),
-            catchError(error => {
-                console.error('Error updating post', error);
-                return of(null);
-            })
-        ).subscribe();
+    onUpdate(post: Post) {
+        this.editing = true;
+        console.log('Editing post____', post);
+        this.myPost._id = post._id;
+        this.myPost.title = post.title;
+        this.myPost.content = post.content;
+    //     this.postsService.updatePost(post._id, this.myPost).pipe(
+    //         tap(response => {
+    //             this.postsService.getPosts();
+    //         }),
+    //         catchError(error => {
+    //             console.error('Error updating post', error);
+    //             return of(null);
+    //         })
+    //     ).subscribe();
     }
+
+  
 
 }
