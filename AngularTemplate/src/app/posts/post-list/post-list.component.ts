@@ -61,21 +61,9 @@ export class PostListComponent implements OnInit, OnDestroy {
 
     onUpdate(post: Post) {
         this.editing = true;
-        console.log('Editing post____', post);
         this.myPost._id = post._id;
         this.myPost.title = post.title;
         this.myPost.content = post.content;
-    //     this.postsService.updatePost(post._id, this.myPost).pipe(
-    //         tap(response => {
-    //             this.postsService.getPosts();
-    //         }),
-    //         catchError(error => {
-    //             console.error('Error updating post', error);
-    //             return of(null);
-    //         })
-    //     ).subscribe();
     }
-
-  
 
 }

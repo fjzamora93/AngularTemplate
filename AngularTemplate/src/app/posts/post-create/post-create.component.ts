@@ -103,4 +103,12 @@ export class PostCreateComponent implements OnInit {
                 console.error('Error adding post:', error);
             }
     )};
+
+
+
+    // Método para cancelar la edición de un post
+    onCancelEdit() {
+        this.editing = false;
+        this.editingChange.emit(this.editing);
+    }
   }

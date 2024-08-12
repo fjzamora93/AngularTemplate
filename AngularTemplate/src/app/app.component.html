@@ -2,17 +2,24 @@
 
 <app-header/>
 
-<h3> Plantilla de PostList: </h3>
+
+<div class="container">
+    <h2>Plantilla de galería de imágenes</h2>
+    <app-gallery/>
+</div>
 
 
-<p> Para que la creación y el fetch de post funcione se requiere una conexión a una API desde la que obtener los datos y mandar las peticiones</p>
-<p> Recuerda incluir en environments la configuración para tu API tanto en desarrollo como en producción. </p>
-<app-post-create/>
 
 
-<app-post-list/>
+<div class="container">
+    <h2> Plantilla de PostList: </h2>
+    <p> Para que la creación y el fetch de post funcione se requiere una conexión a una API desde la que obtener los datos y mandar las peticiones</p>
+    <p> Recuerda incluir en environments la configuración para tu API tanto en desarrollo como en producción. </p>
+    <app-post-create/>
+    <app-post-list/>
+</div>
 
-<h3> Plantilla de calculadora: </h3>
+<h2> Plantilla de calculadora: </h2>
 <app-user-input (calculate)="onCalculateInvestment($event)"/>
 
 <app-investment-result [investment]="investment"/>
