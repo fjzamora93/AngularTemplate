@@ -13,17 +13,5 @@ import { PortraitService } from '../portrait.service';
   styleUrl: './portrait.component.css'
 })
 export class PortraitComponent {
-    constructor(private portraitService: PortraitService) {};
 
-    image: Portrait = {
-        _id: '1',
-        src: "img/characters/humano/bardo/Eric.png",
-        alt: "Eric"
-    } 
-
-    imageGallery : Portrait[] = this.portraitService.portraits;
-
-    openImage(image: Portrait) {
-        console.log("Opening image: " + image.alt);
-}
 }

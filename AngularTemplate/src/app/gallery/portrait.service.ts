@@ -8,35 +8,22 @@ import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class PortraitService {
-
+    private folderImgLength = 5;
     private selectedPortrait?: Portrait;
-    public portraits: Portrait[] = [
-        {
-            "_id": "1",
-            "src": "img/characters/humano/explorador/humano-explorador-0.png",
-            "alt": "Eric"
-        },
-        {
-            "_id": "2",
-            "src": "img/characters/humano/explorador/humano-explorador-1.png",
-            "alt": "John"
-        },
-        {
-            "_id": "3",
-            "src": "img/characters/humano/explorador/humano-explorador-2.png",
-            "alt": "Mark"
-        },
-        {
-            "_id": "4",
-            "src": "img/characters/humano/explorador/humano-explorador-3.png",
-            "alt": "Steve"
-        }
-    ];
+    public portraits: Portrait[] = [];
     
 
     //TODO CAMBIAR URL DE LA API
     private apiUrl = environment.apiUrl + '/posts';
   
-    constructor(private http: HttpClient, private csrfService: CsrfService) {}
+    constructor(private http: HttpClient, private csrfService: CsrfService) {
+        for (let i = 0; i < this.folderImgLength; i++) {
+            this.portraits.push({
+                _id: i.toString(),
+                src: "img/characters/humano/explorador/humano-explorador-" + i + ".png",
+                alt: "Portrait " + i
+            });
+        }
+    }
 
 }
