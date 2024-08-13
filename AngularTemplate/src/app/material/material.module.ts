@@ -9,6 +9,13 @@ import { MatDialogActions, MatDialogContent, MatDialogClose } from '@angular/mat
 import { MatGridAvatarCssMatStyler, MatGridList, MatGridTile } from '@angular/material/grid-list';
 
 
+//Gráficas
+import {ProgressBarMode, MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSlider, MatSliderModule} from '@angular/material/slider';
+import {FormsModule} from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 @NgModule({
   imports: [
     MatInputModule,
@@ -18,7 +25,9 @@ import { MatGridAvatarCssMatStyler, MatGridList, MatGridTile } from '@angular/ma
     MatExpansionModule,
     MatList, MatListItem, 
     MatDialogActions, MatDialogContent, MatDialogClose,
-    MatGridAvatarCssMatStyler, MatGridList, MatGridTile
+    MatGridAvatarCssMatStyler, MatGridList, MatGridTile, //GALERÍA DE IMÁGENES
+    MatProgressBarModule, MatSliderModule, FormsModule, MatRadioModule, MatSlider ,
+    
   ],
   exports: [
     MatInputModule,
@@ -28,7 +37,8 @@ import { MatGridAvatarCssMatStyler, MatGridList, MatGridTile } from '@angular/ma
     MatExpansionModule,
     MatList, MatListItem, 
     MatDialogActions, MatDialogContent, MatDialogClose,
-    MatGridAvatarCssMatStyler, MatGridList, MatGridTile
+    MatGridAvatarCssMatStyler, MatGridList, MatGridTile,
+    MatProgressBarModule, MatSliderModule, FormsModule, MatRadioModule, MatSlider ,
   ]
 })
 export class MaterialModule { }

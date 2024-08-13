@@ -1,0 +1,15 @@
+
+<mat-card>
+    <mat-card-content>
+        @for (graphic of graphicService.graphics; track graphic._id; let idx = $index){
+            
+
+            <div class="progress-container">
+                <p>{{ graphic.title }}</p>
+                <div class="progress-bar">
+                    <app-progress-bar [title]="graphic.title" [delay]="idx*200" [targetValue]="graphic.percent" />
+                </div>
+            </div>
+        }
+    </mat-card-content>
+</mat-card>
