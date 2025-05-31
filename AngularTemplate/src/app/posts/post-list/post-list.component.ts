@@ -6,17 +6,19 @@ import { MaterialModule } from '../../material/material.module'; // Ruta al mód
 
 import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
+import { PostCreateComponent } from '../post-create/post-create.component';
 
 @Component({
     selector: 'app-post-list',
     standalone: true,
     templateUrl: './post-list.component.html',
     styleUrls: ['./post-list.component.css'],
-    imports: [CommonModule, MaterialModule]
+    imports: [CommonModule, MaterialModule, PostCreateComponent]
 })
 export class PostListComponent implements OnInit, OnDestroy {
     posts: Post[] = [];
     private postsSub?: Subscription;
+    editing: boolean = false;
     myPost : Post = {
         _id: '',
         title: '',
@@ -57,9 +59,11 @@ export class PostListComponent implements OnInit, OnDestroy {
         ).subscribe();
     }
 
-    onUpdate(postId: string) {
-        console.log(this.myPost);
-        this.postsService.updatePost(postId, this.myPost);
+    onUpdate(post: Post) {
+        this.editing = true;
+        this.myPost._id = post._id;
+        this.myPost.title = post.title;
+        this.myPost.content = post.content;
     }
 
 }

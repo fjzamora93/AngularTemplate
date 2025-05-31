@@ -1,0 +1,40 @@
+
+
+mat-progress-bar{
+    width: 50%;
+    margin: 0px 0px;
+    display: inline-block;
+    transform: rotateY(180deg);
+}
+
+
+p{
+    display: inline-block;
+    margin: 30px 10px;
+}
+
+.example-section {
+  margin: auto;
+}
+
+/* archivo componente .css */
+.progress-container {
+    width: 100%; /* Ajusta el ancho del contenedor de la barra de progreso */
+    background-color: #e0e0e0; /* Color de fondo de la barra */
+    border-radius: 5px; /* Radio de borde opcional para bordes redondeados */
+    overflow: hidden; /* Asegura que el contenido no se desborde del contenedor */
+  }
+  
+  .progress-bar {
+    width: 100%; /* Ancho del contenedor de la barra de progreso */
+    height: 30px; /* Ajusta la altura de la barra de progreso */
+    position: relative;
+  }
+  
+  .progress-fill {
+    width: 50%; /* Ajusta el ancho de la parte que representa el progreso (porcentaje de progreso) */
+    height: 100%; /* Asegura que la altura coincida con la del contenedor */
+    background-color: #76c7c0; /* Color de la parte que representa el progreso */
+    transition: width 0.3s ease; /* Animación suave al cambiar el ancho */
+  }
+  

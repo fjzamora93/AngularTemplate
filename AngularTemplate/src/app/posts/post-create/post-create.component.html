@@ -1,35 +1,55 @@
-<p> Para que la creación y el fetch de post funcione se requiere una conexión a una API desde la que obtener los datos y mandar las peticiones</p>
-<p> Recuerda incluir en environments la configuración para tu API tanto en desarrollo como en producción. </p>
 
 <mat-card>
-    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
-      <mat-form-field>
-        <input
-          matInput
-          type="text"
-          name="title"
-          ngModel
-          required
-          minlength="3"
-          placeholder="Post Title"
-          #title="ngModel">
-        <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
-      </mat-form-field>
+    <form  #postForm="ngForm">
+        <input type="text" 
+        name="_id" 
+        [(ngModel)]="editedPost._id" 
+        hidden 
+        #_id="ngModel" > 
+
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                name="title"
+                [(ngModel)]="editedPost.title"
+                required
+                placeholder="Post Title"
+                #title="ngModel">
+            <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
+        </mat-form-field>
+
       <mat-form-field>
         <textarea
-          matInput
-          rows="4"
-          name="content"
-          ngModel
-          required
-          placeholder="Post Content"
-          #content="ngModel"></textarea>
+          matInput rows="4" name="content"
+          [(ngModel)]="editedPost.content"
+          required placeholder="Post Content"
+          #content="ngModel">
+        </textarea>
         <mat-error *ngIf="content.invalid">Please enter a post title.</mat-error>
       </mat-form-field>
-      <button
-        mat-raised-button
-        color="accent"
-        type="submit">Save Post</button>
+
+    @if (!editing){
+        <button
+            mat-raised-button
+            color="accent"
+            (click)="onAddPost(postForm)">Guardar
+        </button>
+    } @else {
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="onUpdatePost(postForm)">Actualizar
+        </button>
+
+        <button
+            mat-raised-button
+            color="accent"
+            (click)="onCancelEdit()">Cancelar
+        </button>
+    }
+    
+
     </form>
   </mat-card>
   

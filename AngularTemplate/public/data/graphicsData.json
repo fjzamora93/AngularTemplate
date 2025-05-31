@@ -1,0 +1,33 @@
+[
+
+    {
+        "_id": "1",
+        "percent": 15,
+        "title": "Barra de progreso 1"
+    },
+    {
+        "_id": "2",
+        "percent": 30,
+        "title": "Barra de progreso 2"
+    },
+    {
+        "_id": "3",
+        "percent": 45,
+        "title": "Barra de progreso 3"
+    },
+    {
+        "_id": "4",
+        "percent": 60,
+        "title": "Barra de progreso 4"
+    },
+    {
+        "_id": "5",
+        "percent": 75,
+        "title": "Barra de progreso 5"
+    },
+    {
+        "_id": "6",
+        "percent": 90,
+        "title": "Barra de progreso 6"
+    }
+]

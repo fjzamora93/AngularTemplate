@@ -6,13 +6,17 @@ import { UserInputComponent } from './user-input/user-input.component';
 import { InvestmentService } from './investment-result/investment.service';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
+import { GalleryComponent } from "./gallery/gallery.component";
+import { GraphicsComponent } from "./graphics/graphics.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [HeaderComponent, InvestmentResultComponent, UserInputComponent, PostCreateComponent, PostListComponent ]
+  imports: [HeaderComponent, InvestmentResultComponent, 
+    UserInputComponent, PostCreateComponent, PostListComponent,
+     GalleryComponent, GraphicsComponent]
 })
 
 export class AppComponent {

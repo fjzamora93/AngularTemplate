@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
@@ -13,8 +14,8 @@ body {
   margin: auto;
 }
 
-.center {
-  text-align: center;
+.container{
+    margin: 20px 0px 50px;
 }
 
 html, body { height: 100%; }
